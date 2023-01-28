@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %} {# Chaque livre détaillé #}
+
+{% block title %}{{ book.title }} | Livres en ligne{% endblock %}
+
+{% block body %}
+   
+        <div class="row">
+    	    <div class="col-12 col-md-8 offset-md-2">
+                <div class="text-center">
+                    <h1 class="uppercase py-3 mt-4 mb-3">Détails !</h1>
+                </div>    
+	        </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2 px-5 mb-5">
+                <div class="card mx-3 shadow-sm">
+					<div class="card-header">
+                        <h2 class="card-title text-center uppercase pt-2">  {{ book.title }}</h2>			 
+			        </div>
+                    <div class="card-body">
+						<div class="card-img">                            
+                            <div class="text-center mb-5"><img src="{{ asset('uploads/' ~ book.picture) }}"  class="img-fluid border border-3 border-secondary rounded"> </div>
+                        </div>
+                        <div class="card-text">
+                            <div class="mb-5 text-start"><a href="{{ path('category', { id: category.id }) }}"  class="badge rounded-pill bg-primary">Catégorie : {{ book.category }}</a></div>
+                            <div class= "mb-3 justify"> {{ book.description | raw}}</div>
+                            <div> 
+                                <strong>Auteur  :
+                                {% for author in book.authors %} 
+                                    <span class= "navy"><a href="{{ path('author', { id: author.id }) }}" class="badge rounded-pill bg-secondary">  {{ author.firstname }} {{ author.lastname }}</a></span></strong>
+                                {% endfor %}
+                            </div>
+                            {% if book.collection %} 
+                                <div><strong>Collection </strong> :  {{ book.collection }}</div>
+                            {%  endif %}
+                             {% if book.editor %} 
+                                <div><strong>Editeur </strong> :  {{ book.editor }}</div>
+                            {%  endif %}                          
+                            <div><strong>Date de parution</strong> :  {{ book.releaseDate }}</div>
+                            {% if book.numberpages %} 
+                                <div><strong>Nombre de pages </strong> :  {{ book.numberpages }}</div>
+                            {%  endif %} 
+                            {% if book.promo %} 
+                                <div><strong>Prix</strong> : <s>{{ book.price}} €</s></div>
+                                <div class="text-success"><strong>Promo</strong> :  {{ book.promo}} €</div>
+                            {%  else %} 
+                                <div><strong>Prix</strong> :  {{ book.price}} €</div>
+                              {%  endif %} 
+                            {% if book.isbn10 %} 
+                                <div><strong>ISBN-10</strong> : {{ book.isbn10 }}</div>
+                            {%  endif %} 
+                            {% if book.isbn13 %} 
+                                <div><strong>ISBN-13</strong> : {{ book.isbn13 }}</div>                                
+                            {%  endif %}  
+                            <div><strong>Stock</strong> : {{ book.stock }} 
+                            {% if book.stock <= 0 %}<h2 class="mt-4 px-4 py-4 bg-danger text-center"><strong>Commande en attente. Rupture de stock !</strong></h2>{% endif %}   </div>                            
+                            <a href="{{path("cart_add", {id: book.id})}}" class="btn btn-success mt-4">
+                                <i class="bi bi-cart-plus"></i> Ajouter 
+                            </a>
+                            <div class="text-center my-5"> <a href="{{path('app_index') }}"><button type="button" class="btn btn-primary text-white">Accueil</button></a></div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %} {# Template des commandes à l'intention de l'administrateur #}
+{% block title %}Les commandes | Livres en ligne{% endblock %}
+{% block body %}
+
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+            <div class="text-center">
+                <h1 class="uppercase py-3 mt-4 mb-3">Les commandes</h1>
+            </div>    
+	    </div>
+    </div>
+    <div class="row">
+        {% for purchase in purchases %}    
+            <div class="col-12 col-md-4  my-4">
+                <div class="card  rounded"> 
+                    <div class="card-header">
+                        <h2 class="card-title text-center uppercase pt-2"> commande N° {{ purchase.numberorder }}</h2>			 
+			        </div>
+                    <div class="card-body">
+                        <div class="card-text">                           
+                            <div><strong>Prénom</strong> :  {{ purchase.firstname }}</div>
+                            <div> <strong>Nom :</strong>   {{ purchase.lastname }} </a></span> </div>                            
+                            <div>
+                                <a href="{{ path('purchasedetail', { id: purchase.id }) }}">
+                                    <button type="button" class="btn btn-primary text-white mt-5">Détails</button>
+                                </a>
+                                </div> 		            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div
+    {{ knp_pagination_render(purchases) }} {# Rendu  de la pagination#}
+{% endblock %}
+
+
+
+
+

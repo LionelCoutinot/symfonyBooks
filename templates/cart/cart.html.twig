@@ -1,0 +1,60 @@
+    <section class="bg-light p-3"> {# Template permettant de visualiser le panier  qui est lui même appelé par le template du formulaire de commande #}
+        <h1 class="text-center mt-4 mb-5">Votre panier</h1>
+    </section>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Livre</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for element in dataPanier %}
+                <tr>
+                    <td><i>{{ element.book.title }}</i>  de   {% for author in element.book.authors %} <b>{{ author.firstname }} {{ author.lastname }}</b> {% endfor %} </td>
+                    {% if element.book.promo %} 
+                        <td class="text-end">{{ element.book.promo }} €</td>
+                        <td class="text-end">{{ element.quantite }}</td>
+                        <td class="text-end">{{ element.quantite * element.book.promo }} €</td>
+                    {% else%} 
+                        <td class="text-end">{{ element.book.price }} €</td>
+                        <td class="text-end">{{ element.quantite }}</td>
+                        <td class="text-end">{{ element.quantite * element.book.price }} €</td>
+                    {% endif %}
+                    <td>
+                        <a href="{{path("cart_add", {id: element.book.id})}}" class="btn btn-success">
+                            <i class="bi bi-cart-plus" alt="Ajout d'un élément par click" title="Ajout d'un élément par click"></i>
+                        </a>
+                        <a href="{{path("cart_remove", {id: element.book.id})}}" class="btn btn-warning">
+                            <i class="bi bi-cart-dash" alt="Soustraction d'un élément par click" title="Soustraction d'un élément par click"></i>
+                        </a>
+                        <a href="{{path("cart_delete", {id: element.book.id})}}" class="btn btn-danger">
+                            <i class="bi bi-cart-x" alt="Suppression de l'article" title="Suppression de l'article"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">Votre panier est vide</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total</td>
+                <td class="text-end">
+                    {{ total }} €
+                </td>
+                <td>
+                    <a href="{{path("cart_delete_all")}}" class="btn btn-danger">
+                        <i class="bi bi-cart-x" alt="Remise à zéro du panier" title="Remise à zéro du panier"></i>
+                    </a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    

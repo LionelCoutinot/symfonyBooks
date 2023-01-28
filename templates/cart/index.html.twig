@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %} {# Template du formulaire de commmande #}
+
+{% block title %}Votre panier | Livres en ligne{% endblock %}
+
+{% block body %}
+ 
+    {% include ("cart/cart.html.twig") %}
+        <hr class="my-5" />
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-8 offset-2">
+                    <h2 class="text-center mb-5">Validez votre commande !</h2>			
+			        {% for message in app.flashes('notice') %}
+                        <div class="flash-notice text-center text-success mb-5">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+			        {{ form_start(form)  }}  
+                        <div class="mb-4">
+                            {{ form_label(form.firstname, 'Prénom') }}
+                            {{ form_widget(form.firstname, {'attr': {'placeholder': 'Prénom'}}) }}
+                            <span class="error">{{ form_errors(form.firstname) }}</span>
+                        </div>
+                        <div class="mb-4">
+                            {{ form_label(form.lastname, 'Nom') }}
+                            {{ form_widget(form.lastname, {'attr': {'placeholder': 'Nom'}}) }}
+                            <span class="error">{{ form_errors(form.lastname) }}</span>
+                        </div>
+                        <div class="mb-4">
+                            {{ form_label(form.age, 'Age') }}
+                            {{ form_widget(form.age, {'attr': {'placeholder': 'Age'}}) }}
+                            <span class="error">{{ form_errors(form.age) }}</span>
+                        </div>
+                        <div class="mb-4">
+                            {{ form_label(form.flat, 'Appartement') }}
+                            {{ form_widget(form.flat, {'attr': {'placeholder': 'Appartement'}}) }}
+                            <span class="error">{{ form_errors(form.flat) }}</span>
+                        </div>
+
+                        <div class="mb-4">
+                            {{ form_label(form.street, 'Rue') }}
+                            {{ form_widget(form.street, {'attr': {'placeholder': 'Rue'}}) }}
+                            <span class="error">{{ form_errors(form.street) }}</span>
+                        </div>
+                        <div class="mb-4">
+                            {{ form_label(form.town, 'Ville') }}
+                            {{ form_widget(form.town, {'attr': {'placeholder': 'Ville'}}) }}
+                            <span class="error">{{ form_errors(form.town) }}</span>
+                        </div>
+                        <div class="mb-4">
+                            {{ form_label(form.postalcode, 'Code postal') }}
+                            {{ form_widget(form.postalcode, {'attr': {'placeholder': 'Code postal'}}) }}
+                            <span class="error">{{ form_errors(form.postalcode) }}</span>
+                        </div>
+                        <div class="mb-4">
+                            {{ form_label(form.email, 'Email') }}
+                            {{ form_widget(form.email, {'attr': {'placeholder': 'Email'}}) }}
+                            <span class="error">{{ form_errors(form.email) }}</span>
+                        </div>
+                        <div class="mb-4">
+                            {{ form_label(form.telephone, 'Telephone') }}
+                            {{ form_widget(form.telephone, {'attr': {'placeholder': 'Telephone'}}) }}
+                            <span class="error">{{ form_errors(form.telephone) }}</span>
+                        </div>
+                        <div class="mb-4">                        
+                            {{form_widget(form.purchaseorder)}}                        
+                            <textarea  class="form-control" id="purchase_purchaseorder" name="purchase[purchaseorder]">
+                                <ul>
+                                    {% for element in dataPanier %}
+                                        <li>
+                                            <i>{{ element.book.title}}</i> de {% for author in element.book.authors %} <b>{{ author.firstname }} {{ author.lastname }}</b> {% endfor %}  | Prix unitaire : {% if element.book.promo %} {{ element.book.promo }} €  {% else%} {{ element.book.price }} € {% endif %} | Quantité : {{element.quantite}} | Total {% if element.book.promo %} {{ element.quantite * element.book.promo}} €  {% else%} {{ element.quantite * element.book.price }} € {% endif %}  
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </textarea>
+                        </div>
+                        <div class="mb-4">
+                            {{ form_widget(form.numberorder, {value : number } ) }}
+                            <span class="error">{{ form_errors(form.numberorder) }}</span>
+                        </div>
+                        <div class="mb-4">
+                            {{ form_widget(form.totalquantite, {value : totalquantite} ) }}
+                            <span class="error">{{ form_errors(form.totalquantite) }}</span>
+                        </div>
+                       <div class="mb-4">
+                            {{ form_widget(form.totalprice, {value : total } ) }}
+                        </div>
+                        <div class="mb-4">
+                            {{ form_label(form.payment, 'Moyen de paiement') }}
+                            {{ form_widget(form.payment, {'attr': {'placeholder': 'Moyen de paiement'}}) }}
+                            <span class="error">{{ form_errors(form.payment) }}</span>
+                        </div>
+                        <div class="mb-4">
+                            {{ form_label(form.rgpd, 'RGPD') }}
+                            {{ form_widget(form.rgpd, {'attr': {'placeholder': 'RGPD'}}) }}
+                            <span class="error">{{ form_errors(form.rgpd) }}</span>
+                        </div>
+                        <div class="center mt-5">
+                            <input type="submit" name="" value="Enregistrer" class="btn btn-primary mb-5">
+                        </div>
+                    {{ form_end(form) }}                 
+                </div>
+            </div>
+        </div>
+{% endblock %}

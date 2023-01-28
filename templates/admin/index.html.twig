@@ -1,0 +1,15 @@
+{% extends '@EasyAdmin/page/content.html.twig' %} {# Template configurant la page d'accueil de l'administration (" EasyAdmin ") avec un lien permettant de retourner à "l'index" #}
+    {% block main %}
+        <div class="mb-5" style="text-transform:uppercase;font-weight:bold;background-color:#EEF3F7;border: 2px solid gold;border-radius:10px; ">
+            <center>
+                <h1>Bienvenue sur la page Administration<h1>
+            <center>
+        </div>
+        <div class="mt-5">
+            <div class="text-center mb-5"> <a href="{{path('app_index') }}"><button type="button" class="btn btn-primary text-white">Accueil</button></a></div> 
+        </div>
+    {% endblock %}
+       
+        
+
+

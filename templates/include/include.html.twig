@@ -1,0 +1,30 @@
+{% for book in books %} {# Template de visualisation des différents livres pouvant être appelés par 3 autres templates, celui de tous les livres, celui des livres par auteur et celui des livres par catégorie #}
+    <div class="col-12 col-md-4  my-4">
+        <div class="card  rounded"> 
+            <div class="card-header">
+				<h4 class="card-title uppercase text-center pt-2">{{ book.title }}</h4>	
+            </div>	
+            <div class="card-body">
+                <div class="card-img">
+                    <div class="text-center mb-5"><img src="{{ asset('uploads/' ~ book.picture) }}" class="img-fluid border border-2 border-secondary rounded img-size"> </div>
+                </div>
+                <div class="card-text text-center pb-5">
+                    {% if book.promo %} 
+                        <div><strong>Prix</strong> : <s> {{ book.price}} €</s></div>
+                        <div class="text-success"><strong>Promo</strong> :  {{ book.promo}} €</div>
+                    {%  else %} 
+                        <div><strong>Prix</strong> :  {{ book.price}} €</div>
+                    {%  endif %} 
+                    <div>
+                        <a href="{{ path('book', { id: book.id }) }}">
+                            <button type="button" class="btn btn-primary text-white mt-5">Détails</button>
+                        </a>
+                    </div> 		
+				</div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+<div class="mt-4"> 
+    {{ knp_pagination_render(books) }} {# Rendu de pagination #}
+</div> 

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %} {# Template de l'index des stocks par livre #}
+
+{% block title %} Stocks | Livres en ligne{% endblock %}
+
+{% block body %}
+    <div class="row mt-5">
+    	<div class="col-12 col-md-8 offset-md-1">
+		    <div class="mb-3">
+                {% for message in app.flashes('notice') %}
+                    <div class="flash-notice mb-3 text-success">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endfor %}
+            </div>
+	    </div>
+    </div>
+    <div class="row  mb-5 text-dark">
+        <div class="col-12 col-md-8  offset-md-2 my-3">
+            <div style="justify-content:center">
+                <div class="card rounded pb-5"> 
+                    <div class="card-header">
+				        <h4 class="card-title uppercase text-center pt-2">Les stocks</h4>	
+                    </div>	
+                    <div class="card-body">
+                        <ul>
+                            {% for book in books %}
+                                <div class="card-text">
+                                    <li>
+                                        <a href="{{ path('book', { id:book.id }) }}">
+                                            <i>{{ book.title }}</i> 
+                                        </a>
+                                        {% if book.stock <= 0 %}
+                                            =><span class="text-danger"> <b>{{ book.stock  }}</b> livres en stock</span>.
+                                         {% else %}
+                                            => <b>{{ book.stock  }}</b> livres en stock.                                        
+                                        {% endif %}
+                                        <br /><br /> 
+                                    </li>
+                                </div>
+                            {% endfor %}  
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

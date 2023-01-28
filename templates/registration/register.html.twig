@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %} {# Template du formulaire d'enregistrement#}
+
+{% block title %}Enregistrement | Livres en ligne{% endblock %}
+
+{% block body %} 
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3 mt-5 px-5   px-5">
+            <div class="card  border border-2 border-secondary  rounded"> 
+                <div class="card-header">
+                    <h1 class="text-center uppercase">Enregistrement</h1>
+                </div>
+                <div class="card-body">
+                    <div class="card-text"> 
+                        <div class="form-group mt-5"> 
+                            {{ form_start(registrationForm) }}
+                                {{ form_row(registrationForm.email) }}
+                                {{ form_row(registrationForm.plainPassword, {label: 'Password' }) }}
+                                {{ form_row(registrationForm.agreeTerms) }}
+
+                                <button type="submit"  class="form-control btn btn-primary my-5">Enregistrer</button>
+                            {{ form_end(registrationForm) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

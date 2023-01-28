@@ -1,0 +1,59 @@
+
+{% extends 'base.html.twig' %} {# Template du détail de chaque commande #}
+{% block title %}Détail de la commande | Livres en ligne{{ purchase.numberorder }}{% endblock %}
+       
+{% block body %}
+    <div class="row">
+        <div>
+            <input id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer cette page" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2 px-5 my-5">
+            <div class="card mx-3 shadow-sm">
+				<div class="card-header">
+                    <h2 class="card-title text-center uppercase pt-2"> commande N° {{ purchase.numberorder }}</h2>			 
+			    </div>
+                <div class="card-body">
+                    <div class="card-text">                           
+                        <div><strong>Prénom</strong> :  {{ purchase.firstname }}</div>
+                        <div> <strong>Nom :</strong>   {{ purchase.lastname }} </a></span> </div>                            
+                        {% if purchase.age %} 
+                            <div><strong>Âge</strong> : {{ purchase.age}} ans</div>                           
+                        {%  endif %} 
+                        {% if purchase.flat %} 
+                            <div><strong>Appartement</strong> : {{ purchase.flat}}</div>                           
+                        {%  endif %}    
+                        <div><strong>Rue</strong> :  {{purchase.street }}</div>
+                        <div><strong>Ville</strong> : {{purchase.town }} </div>
+                        <div><strong>Code postal</strong> :  {{purchase.postalcode }} </div>
+                        <div><strong>Email</strong> :  {{purchase.email }} </div>
+                        {% if  purchase.telephone%} 
+                            <div><strong>Téléphone</strong> : {{ purchase.telephone }}</div>
+                        {%  endif %} 
+                        <center>
+                            <br />
+                            <hr class="style-hr" /> 
+                            <br />
+                        </center>                        
+                         <h4 class="text-center  mb-3">Les achats</h4>
+                       <div>{{ purchase.purchaseorder |raw }}</div>
+                        <strong>Nombre d'articles</strong> :  {{purchase.totalquantite }} 
+                       <div><strong>Total</strong> :  {{purchase.totalprice }} €</div>
+                       <div><strong>Moyen de paiement</strong> :  {{purchase.payment }}</div>
+                        <div class="text-center my-5"> <a href="{{path('app_index') }}"><button type="button" class="btn btn-primary text-white">Accueil</button></a></div>                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div
+
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        function imprimer_page(){
+            window.print();
+        }
+    </script>
+{% endblock %}
+

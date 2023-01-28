@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions-légales!{% endblock %}
+
+{% block body %}
+
+
+<div class="container mentions-style">     
+    <h1 class="text-center my-5">Mentions Légales (<strong class="text-danger">Exemple !!!</strong>)</h1>
+    <div class="row">
+        <h5 class="line mb-5"><span>Nos engagements</span></h5> 
+         <div class="col-12 col-md-4 pt-4 text-center">
+            <span class="border rounded-circle  number">1</span>
+                <p class="mt-5 justify"> Nous ne collectons vos données qu’avec votre accord et en vous expliquant clairement l’usage que nous voulons en faire.</p> 
+        </div>
+        <div class="col-12 col-md-4 pt-4 text-center">
+            <span class="border rounded-circle  number">2</span>
+                <p class="mt-5 justify">Nous ne vous enverrons des communications et newsletters qu’avec votre autorisation explicite.</p> 
+        </div>
+        <div class="col-12 col-md-4 pt-4 text-center">
+            <span class="border rounded-circle  number">3</span>
+                <p class="mt-5 justify">Aucun cookie utilisé pour des fins de service, de personnalisation ou publicitaire ne sera posé sans votre autorisation. </p> 
+        </div>
+    </div>
+    <div class="row">
+       
+         <div class="col-12 col-md-4 pt-4 text-center">
+            <span class="border rounded-circle  number">4</span>
+                <p class="mt-5 justify">Toutes les données récupérées sont hébergées en France en priorité ou en Union Européenne.</p> 
+        </div>
+        <div class="col-12 col-md-4 pt-4 text-center">
+            <span class="border rounded-circle  number">5</span>
+                <p class="mt-5 justify">Nous ne conservons vos données que le strict temps nécessaire au traitement des commandes ou de l’usage du service choisi. Au-delà de ce délai, elles sont systématiquement supprimées.</p> 
+        </div>
+        <div class="col-12 col-md-4 pt-4 text-center">
+            <span class="border rounded-circle  number">6</span>
+                <p class="mt-5 justify">Nous ne partageons vos informations avec les autres sociétés de notre groupe Adeo que pour vous proposer une expérience plus personnalisée ou améliorer la qualité de nos services. Seuls les partenaires ayant votre autorisation explicite pourront communiquer avec vous. </p> 
+        </div>
+    </div>
+    <div class="row mb-5">
+ 
+         <div class="col-12 col-md-4 pt-4 text-center">
+            <span class="border rounded-circle  number">7</span>
+                <p class="mt-5 justify">Vous gardez la main sur vos données personnelles : nous vous donnons les moyens de les consulter, modifier, supprimer.</p> 
+        </div>
+        <div class="col-12 col-md-4 pt-4 text-center">
+            <span class="border rounded-circle  number">8</span>
+                <p class="mt-5 justify">Nous mettons tout en œuvre pour protéger l’ensemble de vos données personnelles.</p> 
+        </div>
+        <div class="col-12 col-md-4 pt-4 text-center">
+            <span class="rounded-circle  number">9</span>
+                <p class="mt-5 justify">En cas d’atteinte aux données personnelles, nous vous informerions le plus rapidement et plus précisément possible. </p> 
+        </div>
+    </div>
+    <div class="row mb-5">
+        <h5 class="line mb-5"><span>Nos communications</span></h5> 
+        <div class="col-12 col-md-4 pt-4 text-center">
+           <span class="mt-5 text-center"><img src="{{ asset('assets/icones/icone1.bmp') }}"></span>
+                <p class="mt-5 justify">Nous nous engageons à n’utiliser vos données personnelles confiées lors d’un achat, d’une utilisation de service ou d’une demande que dans le cadre du traitement de cet achat, service ou demande (par exemple : confirmation ou suivi de commande, confirmation d’un rendez-vous, réponse à une demande, etc.), ainsi que pour le recueil de vos commentaires et avis sur nos prestations et produits.</p> 
+        </div>
+        <div class="col-12 col-md-4 pt-4  text-center">
+            <span class="mt-4 text-center"><img src="{{ asset('assets/icones/icone2.bmp') }}"></span>
+                <p class="mt-5 justify">Vous pouvez choisir de recevoir nos newsletters et communications vous proposant des offres et services personnalisés. Nous vous enverrons ces suggestions uniquement avec votre accord explicite</p> 
+        </div>
+        <div class="col-12 col-md-4 pt-4 text-center">
+            <span class="mt-4 text-center"><img src="{{ asset('assets/icones/icone3.bmp') }}"></span>
+                <p class="mt-5 justify ">
+                    Vous pouvez gérer vos préférences de communication à tout moment :
+                    <br/>
+                    en gérant vos préférences dans votre compte <i>My Lock</i> (rubrique newsletter)
+                    <br/>
+                    en cliquant sur le lien de désabonnement en bas d’un de nos emails - en répondant Stop à l’un de nos SMS
+                </p> 
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

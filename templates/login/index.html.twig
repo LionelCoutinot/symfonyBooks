@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %} {# Template de connection à la partie " admin " #}
+
+{% block title %}Connection | Livres en ligne{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3 mt-5 px-5   px-5">
+            <div class="mt-4 text-danger">
+                <strong>
+		            {% if error %}
+                        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+		        </strong>
+	        </div>
+            <div class="card  border border-2 border-secondary  rounded"> 
+                <div class="card-header">
+                    <h1 class="text-center uppercase">Connection</h1>
+                </div>
+                <div class="card-body">
+                    <div class="card-text"> 
+                        <div class="form-group mt-5">             
+                            <form action="{{ path('login') }}" method="post"> 
+                                <div class="mb-5">      
+                                    <label for="username">Email:</label>
+                                    <input type="text" id="username" name="_username"  class="form-control" value="{{ last_username }}"/>
+                                </div>
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" name="_password"  class="form-control"/>
+
+                                {# If you want to control the URL the user is redirected to on success
+                                <input type="hidden" name="_target_path" value="/account"/> #}
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                <button type="submit" class="form-control btn btn-primary my-5">Login</button>
+                            </form>
+	                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

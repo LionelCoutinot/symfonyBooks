@@ -4,9 +4,13 @@
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
+/public/assets/uploads
 /public/bundles/
 /var/
 /vendor/
+/.Identifiants.pdf
+/.Identifiants.odt
+/.symfonyBooks.sql
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
@@ -18,3 +22,5 @@
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+
+
