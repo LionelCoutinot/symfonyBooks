@@ -5,4 +5,4 @@ Cette application est réalisée avec <b>PHP 8.2</b> et <b><i>Symfony 6.1</i></b
 <br />
 Les administrateurs, eux, disposent d'une page " admin ", où il peuvent ajouter des auteurs des livres ou les les modifier s'il y  a lieu. Ils peuvent accéder à une page " Stock " , pour visualiser l'état du stock pour chaque livre. Et évidemment, ils accèdent à une page commande pour visualiser les diverses commandes passées.
 <br />
-On peut regarder le fichier Captures-ecran-LivreEnLigne.pdf pour se faire une idée du rendu et des diverses fonctionnalités ainsi que le fichier Schema-BDD-symfonyBooks.pdf pour les différentes tables de la base de données et la nature des liaisons qui les relient. 
+On peut regarder le fichier <i>Captures-ecran-LivreEnLigne.pdf</i> pour se faire une idée du rendu et des diverses fonctionnalités ainsi que le fichier Schema-BDD-<i>symfonyBooks.pdf</i> pour les différentes tables de la base de données et la nature des liaisons qui les relient. 
