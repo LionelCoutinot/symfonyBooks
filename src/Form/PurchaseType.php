@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PurchaseType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void /* Définition des divers types de champs pour le fomulaire de commande et des paramètres qui leur sont assignés si besoin */
+    public function buildForm(FormBuilderInterface $builder, array $options): void /* Définition des divers types de champs pour le formulaire de commande et des paramètres qui leur sont assignés si besoin */
     {
         $builder
             ->add('firstname',  TextType::class)
