@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints\NotNull;
 
 class CommentsType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void /* Définition des divers types de champs pour le formulaire  et des paramètres qui leur sont assignés si besoin */
+    public function buildForm(FormBuilderInterface $builder, array $options): void /* Définition des divers types de champs pour le formulaire des commentaires et des paramètres qui leur sont assignés si besoin */
     {
         $builder
         ->add('email', EmailType::class, [
