@@ -12,6 +12,10 @@ body
     color:white;
 }
 
+.gold{
+  color:gold;
+  text-shadow: 3px 3px 2px gray;
+}
 
 .back-nav {
     background-color:#90A5B6;    
@@ -35,8 +39,20 @@ a
     text-decoration: none;
 }
 
+.card{
+  box-shadow: gray 6px 6px 7px;
+}
+
 .card-header {
     background-color:#90A5B6; 
+}
+
+.title-detail{
+  background-color:#90A5B6; 
+  border-radius:5px;
+  text-shadow: 3px 3px 2px gray;
+  box-shadow: 3px 3px 2px gray;
+
 }
 
 .color37{
@@ -114,6 +130,21 @@ h5 span{
   width:50%;
   border:2px dashed black;
 }
+
+.comment{
+  background-color:#89cc89;
+  border-radius:15px;
+  padding:15px;
+  width:75%;
+  text-align:justify;
+  box-shadow: gray 3px 3px 7px;
+}
+
+.separator{
+   height:10px;
+   
+}
+
 
 
 /* The sidebar menu */
@@ -215,7 +246,22 @@ h5 span{
     background-color:black;    
 }
 
+.margin2{	
+	margin-top:50px;
+ }
 
+ /* Taille et couleur de remplissage des étoiles de l'avis */
+
+ .lar{ /* Les étoiles " vides " du formulaire */
+ color: black;
+ font-size:30px;
+ }
+
+ .las{ /* Les étoiles " remplies " */
+  color: red;
+  font-size:30px;
+ }
+ 
 
 
 

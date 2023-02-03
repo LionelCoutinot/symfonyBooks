@@ -7,6 +7,7 @@ use App\Entity\Book;
 use App\Entity\Category;
 use App\Entity\Purchase;
 use App\Entity\Author;
+use App\Entity\Comments;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -53,6 +54,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Auteur', 'fas fa-list', Author::class);
         yield MenuItem::linkToCrud('Livre', 'fas fa-list', Book::class);
         yield MenuItem::linkToCrud('Categorie', 'fas fa-list', Category::class);  
+        yield MenuItem::linkToCrud('Commentaires', 'fas fa-list', Comments::class); 
       /* yield MenuItem::linkToCrud('Commande', 'fas fa-list', Purchase::class);  */
     }
 }

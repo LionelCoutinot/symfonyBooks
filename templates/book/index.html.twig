@@ -5,18 +5,15 @@
 {% block body %}
    
         <div class="row">
-    	    <div class="col-12 col-md-8 offset-md-2">
-                <div class="text-center">
-                    <h1 class="uppercase py-3 mt-4 mb-3">Détails !</h1>
+    	    <div class="col-12">
+                <div class="text-center title-detail mb-5">
+                    <h1 class="uppercase py-3 mt-4 mb-3">{{ book.title }}</h1>
                 </div>    
 	        </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-8 offset-md-2 px-5 mb-5">
-                <div class="card mx-3 shadow-sm">
-					<div class="card-header">
-                        <h2 class="card-title text-center uppercase pt-2">  {{ book.title }}</h2>			 
-			        </div>
+            <div class="col-12 col-md-7 px-5 mb-5">
+                <div class="card mx-3">
                     <div class="card-body">
 						<div class="card-img">                            
                             <div class="text-center mb-5"><img src="{{ asset('uploads/' ~ book.picture) }}"  class="img-fluid border border-3 border-secondary rounded"> </div>
@@ -57,10 +54,70 @@
                             <a href="{{path("cart_add", {id: book.id})}}" class="btn btn-success mt-4">
                                 <i class="bi bi-cart-plus"></i> Ajouter 
                             </a>
-                            <div class="text-center my-5"> <a href="{{path('app_index') }}"><button type="button" class="btn btn-primary text-white">Accueil</button></a></div>                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>      
+                            <div class="text-center my-5"> <a href="{{path('app_index') }}"><button type="button" class="btn btn-primary text-white">Accueil</button></a></div> 
+
+                            <hr style ="height:5px">
+                            <div class="row">
+			                    <div class="col-12 px-5" id="ajout-commentaire">
+                                    <h3 class="uppercase text-center my-5">Votre avis</h3>
+                                    {{ form_start(commentForm) }}   
+                                    <h4>Votre note</h4>
+                                    <div class="stars">
+                                        <i class="lar la-star starshow" data-value="1"></i><i class="lar la-star starshow" data-value="2"></i><i class="lar la-star starshow" data-value="3"></i><i class="lar la-star starshow" data-value="4"></i><i class="lar la-star starshow" data-value="5"></i>
+                                    </div>
+                                    {{ form_widget(commentForm.note, { 'id': 'note', 'name':'note'}) }}                     
+                                        <h4 class='pt-4'>Votre commentaire</h4>           
+				                        <p class="pt-4">   {{ form_row(commentForm.email) }}</p>
+                                        <p class="pt-4">   {{ form_row(commentForm.nickname) }}</p>
+				                        <p class="pt-4">  {{ form_row(commentForm.content) }}</p>
+                                        <p class="pt-4">   {{ form_row(commentForm.rgpd) }}</p>
+                                        <div class="center mt-5">
+                                            <input type="submit" name="" value="Envoyer" class="btn btn-primary mb-5">
+                                        </div>
+                                    {{ form_end(commentForm) }}
+			                    </div>
+		                    </div>  
+     			        </div>
+		            </div>  
+                </div> 
+            </div> 
+            <div class="col-12 col-md-5 px-5 mb-5">
+				<h4 class="uppercase text-center">Vos notes et commentaires</h4>
+                {% if book.comments is empty %} {# Vérification de la présence de notes ou de commentaires #}
+                    <p class="text-center mt-5"><strong>Ni note ni commentaire pour l'instant !</strong></p>
+                {% else %}                
+                    {% for comment in book.comments %} {# Visualisation de notes et de commentaires  #}
+                        {% if comment.active  %}                         
+                            {% if comment.rgpd  %}
+							    <div class="col-12 commentBack mb-5">
+                                    <div class="mb-3">
+                                        <div class="text-center my-4">	                                
+                                            <p>--------------------------------</p>
+                                        </div>
+                                        <h4>{% if comment.note  %} | Note  {% endif %}   {% if comment.content  %} | Commentaire {% endif %}  : <b>{{comment.nickname}}</b></h4>
+                                        <p> Publiés le {{comment.createdAt|date("d/m/Y H:i") }} </p>
+                                        {% if comment.note == 1 %} 
+                                            <i class="lar2 la-star las"></i>
+                                        {% elseif comment.note == 2 %} 
+                                            <i class="lar2 la-star las"></i><i class="lar la-star las"></i>
+                                        {% elseif comment.note == 3 %} 
+                                            <i class="lar2 la-star las"></i><i class="lar2 la-star las"></i><i class="lar2 la-star las"></i>
+                                        {% elseif comment.note == 4 %} 
+                                            <i class="lar la-star las"></i><i class="lar la-star las"></i><i class="lar la-star las"></i><i class="lar la-star las"></i>
+                                        {% elseif comment.note == 5 %}  
+                                            <i class="lar la-star las"></i><i class="lar la-star las"></i><i class="lar la-star las"></i><i class="lar la-star las"></i><i class="lar la-star las"></i>
+                                        {% endif %}
+                                    </div>
+                                    {% if comment.content  %}
+								        <div class="comment">
+                                            {{comment.content|raw}}
+                                        </div>                                                    
+                                    {% endif %}
+                                </div>  
+						    {% endif %}
+                        {% endif %}	
+				    {% endfor %}
+                {% endif %}
+			</div>
+		</div>
 {% endblock %}
